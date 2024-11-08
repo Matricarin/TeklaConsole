@@ -1,0 +1,37 @@
+﻿namespace Tekla.Technology.Akit.UserScript
+{
+    public class Script
+    {
+        public static void Run(Tekla.Technology.Akit.IScript akit)
+        {
+            try
+            {
+                new YourMacrosClass();
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.Message + ex.StackTrace);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            try
+            {
+                new YourMacrosClass();
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.Message + ex.StackTrace);
+            }
+        }
+    }
+
+    public class YourMacrosClass
+    {
+        public YourMacrosClass()
+        {
+
+        }
+    }
+}
