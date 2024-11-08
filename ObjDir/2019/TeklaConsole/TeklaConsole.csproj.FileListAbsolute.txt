@@ -1,0 +1,7 @@
+C:\Users\urd\Desktop\repos\TeklaConsole\TeklaConsole\TeklaConsole\bin\Debug\TeklaConsole.exe.config
+C:\Users\urd\Desktop\repos\TeklaConsole\TeklaConsole\TeklaConsole\bin\Debug\TeklaConsole.exe
+C:\Users\urd\Desktop\repos\TeklaConsole\TeklaConsole\TeklaConsole\bin\Debug\TeklaConsole.pdb
+C:\Users\urd\Desktop\repos\TeklaConsole\TeklaConsole\ObjDir\2019\TeklaConsole\TeklaConsole.csproj.AssemblyReference.cache
+C:\Users\urd\Desktop\repos\TeklaConsole\TeklaConsole\ObjDir\2019\TeklaConsole\TeklaConsole.csproj.CoreCompileInputs.cache
+C:\Users\urd\Desktop\repos\TeklaConsole\TeklaConsole\ObjDir\2019\TeklaConsole\TeklaConsole.exe
+C:\Users\urd\Desktop\repos\TeklaConsole\TeklaConsole\ObjDir\2019\TeklaConsole\TeklaConsole.pdb
