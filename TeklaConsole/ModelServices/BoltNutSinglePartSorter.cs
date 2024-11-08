@@ -12,7 +12,7 @@ namespace TeklaConsole.ModelServices
         {
             TSM.Model model = new TSM.Model();
 
-            if (model.GetConnectionStatus())
+            if (!model.GetConnectionStatus())
                 throw new Exception("I lost connection with Tekla.");
 
             ArrayList boltsWithOneNutCollection = new ArrayList();
@@ -26,14 +26,18 @@ namespace TeklaConsole.ModelServices
                 return;
             }
 
+            TSMO.Operation.DisplayPrompt("I am collecting bolts from parts.");
+
             while (modelObjectsEnumerator.MoveNext())
             {
-                if (modelObjectsEnumerator.Current is TSM.Part part)
+                TSM.Part part = modelObjectsEnumerator.Current as TSM.Part;
+                if (part != null)
                 {
                     TSM.ModelObjectEnumerator boltsEnumerator = part.GetBolts();
                     while (boltsEnumerator.MoveNext())
                     {
-                        if (boltsEnumerator.Current is TSM.BoltGroup boltGroup)
+                        TSM.BoltGroup boltGroup = boltsEnumerator.Current as TSM.BoltGroup;
+                        if (boltGroup != null)
                         {
                             if (boltGroup.Nut1 == true && boltGroup.Nut2 == false)
                             {
@@ -46,9 +50,12 @@ namespace TeklaConsole.ModelServices
 
             ArrayList allBoltedParts = new ArrayList();
 
+            TSMO.Operation.DisplayPrompt("I am looking for bolts with one nut.");
+
             foreach (object obj in boltsWithOneNutCollection)
             {
-                if (obj is TSM.BoltGroup bolt)
+                TSM.BoltGroup bolt = obj as TSM.BoltGroup;
+                if (bolt != null)
                 {
                     allBoltedParts.Add(bolt.PartToBoltTo);
                     allBoltedParts.Add(bolt.PartToBeBolted);
@@ -58,9 +65,13 @@ namespace TeklaConsole.ModelServices
 
             ArrayList result = new ArrayList();
 
+
+            TSMO.Operation.DisplayPrompt("I am looking for single-part assemblies.");
+
             foreach (object obj in allBoltedParts)
             {
-                if (obj is TSM.Part part)
+                TSM.Part part = obj as TSM.Part;
+                if (part != null)
                 {
                     TSM.Assembly assembly = part.GetAssembly();
                     int secondariesPartsCount = assembly.GetSecondaries().Count;
@@ -76,7 +87,7 @@ namespace TeklaConsole.ModelServices
             else
             {
                 selector.Select(result);
-                TSMO.Operation.DisplayPrompt($"I find {result.Count} single-part assemblies.");
+                TSMO.Operation.DisplayPrompt("I find " + result.Count + " single-part assemblies.");
             }
         }
     }
